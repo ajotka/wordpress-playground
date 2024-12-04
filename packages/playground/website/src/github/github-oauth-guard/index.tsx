@@ -44,6 +44,7 @@ export default function GitHubOAuthGuard({
 	children,
 	mayLoseProgress,
 }: GitHubOAuthGuardProps) {
+
 	if (oAuthState.value.isAuthorizing) {
 		return (
 			<div>
@@ -88,6 +89,16 @@ function Authenticate({
 	});
 	return (
 		<div>
+			<Timeline>
+				<Timeline.Node symbol={'1'} title={"Connect to GitHub"} isActive>
+					Importing plugins, themes, and wp-content directories directly
+					from your public GitHub repositories.
+				</Timeline.Node>
+				<Timeline.Node symbol={'2'} title={"Enter URL to import"}>
+					See examples in the documentation
+				</Timeline.Node>
+			</Timeline>
+
 			<p>
 				Importing plugins, themes, and wp-content directories directly
 				from your public GitHub repositories.
@@ -99,7 +110,7 @@ function Authenticate({
 			{mayLoseProgress ? (
 				<>
 					<p>
-						<b>You will lose your progress.</b> Your Playground is
+					<b>You will lose your progress.</b> Your Playground is
 						temporary and the authentication flow will redirect you
 						to GitHub and erase all your changes. Be sure to export
 						your Playground to a zip file before proceeding.
